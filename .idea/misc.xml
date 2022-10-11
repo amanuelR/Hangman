@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Desktop/Fall2022/CECS.453.Nguyen/Assignments/Hangman/app/src/main/res/layout/activity_main.xml" value="0.2749094202898551" />
+        <entry key="..\:/Desktop/Fall2022/CECS.453.Nguyen/Assignments/Hangman/app/src/main/res/layout/fragment_game_control.xml" value="0.2749094202898551" />
+        <entry key="..\:/Desktop/Fall2022/CECS.453.Nguyen/Assignments/Hangman/app/src/main/res/layout/fragment_game_result.xml" value="0.3875" />
+        <entry key="..\:/Desktop/Fall2022/CECS.453.Nguyen/Assignments/Hangman/app/src/main/res/layout/fragment_game_state.xml" value="0.3378623188405797" />
         <entry key="app/src/main/res/layout/fragment_game_control.xml" value="0.1" />
       </map>
     </option>

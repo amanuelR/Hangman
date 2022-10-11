@@ -11,7 +11,7 @@
 
     <LinearLayout style="@style/wrapCenterWeight1">
 
-        <Button style="@style/buttonStyle" android:onClick="play"
+        <Button style="@style/buttonStyle" android:id="@+id/play"
             android:text="@string/play"/>
 
     </LinearLayout>

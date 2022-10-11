@@ -2,7 +2,6 @@ package com.example.hangman
 
 import java.util.*
 
-
 class Hangman(guesses: Int) {
     private val words = arrayOf("ANDROID", "JAVA", "APP", "MOBILE")
     private val word: String
@@ -10,6 +9,7 @@ class Hangman(guesses: Int) {
     var guessesAllowed = 0
     var guessesLeft: Int
         private set
+
     fun guess(c: Char) {
         var goodGuess = false
         for (i in 0 until word.length) {
@@ -23,27 +23,30 @@ class Hangman(guesses: Int) {
 
     fun currentIncompleteWord(): String {
         var guess = ""
-        for (i in 0 until word.length) guess += if (indexesGuessed[i]) word[i].toString() + " " else "_ "
+        for (i in 0 until word.length) guess += if (indexesGuessed[i])
+            word[i].toString() + " " else "_ "
         return guess
     }
 
     fun gameOver(): Int {
         var won = true
-        for (i in indexesGuessed.indices)
-            if (indexesGuessed[i] == false) {
-                won = false
-                 break
-             }
+        for (i in indexesGuessed.indices) if (indexesGuessed[i] == false) {
+
+            won = false
+            break
+        }
         return if (won) // won
-                1 else if (guessesLeft == 0) // lost
-                -1 else  // game not over
-                  0
+            1
+        else if (guessesLeft == 0) // lost
+            -1
+        else // game not over
+            0
     }
 
     companion object {
         var DEFAULT_GUESSES = 6
-    }
 
+    }
     init {
         guessesAllowed = if (guesses > 0) guesses else DEFAULT_GUESSES
         guessesLeft = guessesAllowed
@@ -51,5 +54,12 @@ class Hangman(guesses: Int) {
         val index = random.nextInt(words.size)
         word = words[index]
         indexesGuessed = BooleanArray(word.length)
+
+
+
+
+
+
+
     }
 }

@@ -33,7 +33,5 @@
             android:id="@+id/game_result"
             android:background="@color/game_result_background"
             android:gravity="center"/>
-
     </LinearLayout>
-
 </LinearLayout>
