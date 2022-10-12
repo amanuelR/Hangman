@@ -45,8 +45,8 @@ class Hangman(guesses: Int) {
 
     companion object {
         var DEFAULT_GUESSES = 6
-
     }
+
     init {
         guessesAllowed = if (guesses > 0) guesses else DEFAULT_GUESSES
         guessesLeft = guessesAllowed
@@ -54,12 +54,5 @@ class Hangman(guesses: Int) {
         val index = random.nextInt(words.size)
         word = words[index]
         indexesGuessed = BooleanArray(word.length)
-
-
-
-
-
-
-
     }
 }

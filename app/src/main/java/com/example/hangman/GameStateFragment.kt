@@ -28,7 +28,8 @@ class GameStateFragment : Fragment() {
     private val binding get() = _binding!!
     val game: Hangman= MainActivity.game
 
-    override fun onCreate(savedInstanceState: Bundle?) { super.onCreate(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -37,8 +38,8 @@ class GameStateFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-// Inflate the layout for this fragment
-// return inflater.inflate(R.layout.fragment_game_control, container, false)
+    // Inflate the layout for this fragment
+    // return inflater.inflate(R.layout.fragment_game_control, container, false)
         _binding = FragmentGameStateBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
         return binding.root

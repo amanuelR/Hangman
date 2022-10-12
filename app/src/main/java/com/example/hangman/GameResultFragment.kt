@@ -18,7 +18,8 @@ class GameResultFragment: Fragment() {
     override fun onCreateView( inflater: LayoutInflater,
                                container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        Toast.makeText(getActivity(), "Click!", Toast.LENGTH_SHORT).show(); setUpFragmentGui(container)
+        Toast.makeText(getActivity(), "Click!", Toast.LENGTH_SHORT).show();
+        setUpFragmentGui(container)
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
