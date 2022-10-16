@@ -45,16 +45,18 @@ class GameControlFragment : Fragment() {
         _binding = FragmentGameControlBinding.inflate(inflater, container,
             false)
         val model = ViewModelProvider(requireActivity()).get(Communicator::class.java)
+        model.sendGuessLeft(game.guessesLeft)
+        binding.status.text = model.guessLeft.value.toString()
 
     //Binding the play button onClick event. In the event, call the method
     //sendIncompleteWord by passing the function currentIncompleteWord (You need
     //a Hangman object to call the method)
         binding.play.setOnClickListener {
             model.sendIncompleteWord(game.currentIncompleteWord())
+            model.sendGuessLeft(game.guessesLeft)
+            // binding the status with the number of guesses left
+            binding.status.text = model.guessLeft.value.toString()
         }
-
-        // binding the status with the number of guesses left
-        binding.status.text = model.guessLeft.toString()
 
         // Inflate the layout for this fragment
         return binding.root

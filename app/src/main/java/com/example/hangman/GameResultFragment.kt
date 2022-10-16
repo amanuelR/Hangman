@@ -9,10 +9,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.hangman.MainActivity.Companion.game
-import com.example.hangman.databinding.FragmentGameControlBinding
 import com.example.hangman.databinding.FragmentGameResultBinding
 
 class GameResultFragment : Fragment() {
@@ -29,6 +27,7 @@ class GameResultFragment : Fragment() {
         // return inflater.inflate(R.layout.fragment_game_control, container, false)
         _binding = FragmentGameResultBinding.inflate(inflater, container, false)
         setUpFragmentGui(container)
+
 
         //Create the ViewModel object of class Communicator
         val model = ViewModelProvider(requireActivity()).get(Communicator::class.java)

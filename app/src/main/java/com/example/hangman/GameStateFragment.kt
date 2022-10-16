@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.hangman.MainActivity.Companion.game
 import com.example.hangman.databinding.FragmentGameStateBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -52,7 +51,7 @@ class GameStateFragment : Fragment() {
         model.currentIncompleteWord.observe(viewLifecycleOwner, Observer {
     // Binding the state of the game (stateOfGame. Update the incomplete word in
     //the TextView inside the top right pane.
-            binding.stateOfGame.text = model.currentIncompleteWord.toString()
+            binding.stateOfGame.text = model.currentIncompleteWord.value.toString()
 
             model.sendGuessLeft(game.guessesLeft)
 
@@ -79,6 +78,7 @@ class GameStateFragment : Fragment() {
                     // update number of guesses left
                     val letter: Char = str!!.get(0)
                     game.guess(letter)
+                    model.sendGuessLeft(game.guessesLeft)
             }
        }
        override fun beforeTextChanged(s: CharSequence, start: Int,
