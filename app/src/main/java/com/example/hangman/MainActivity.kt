@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     // setContentView(R.layout.activity_main)
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.add(R.id.game_state, GameStateFragment())
+        fragmentTransaction.addToBackStack(null)
         fragmentTransaction.add(R.id.game_result, GameResultFragment())
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
