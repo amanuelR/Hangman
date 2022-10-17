@@ -37,7 +37,7 @@ class Hangman(guesses: Int) {
         }
         return if (won) // won
             1
-        else if (guessesLeft == 0) // lost
+        else if (guessesLeft <= 0) // lost
             -1
         else // game not over
             0

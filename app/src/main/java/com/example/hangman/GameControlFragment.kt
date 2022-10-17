@@ -54,6 +54,11 @@ class GameControlFragment : Fragment() {
         binding.play.setOnClickListener {
             model.sendIncompleteWord(game.currentIncompleteWord())
             model.sendGuessLeft(game.guessesLeft)
+
+            if(game.guessesLeft < 0)  {
+                model.sendGuessLeft(0)
+            }
+
             // binding the status with the number of guesses left
             binding.status.text = model.guessLeft.value.toString()
         }
