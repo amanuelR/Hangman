@@ -1,31 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/game_control_background"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".GameControlFragment">
-
-
-    <LinearLayout style="@style/wrapCenterWeight1">
-
-        <Button
-            android:id="@+id/play"
-            style="@style/buttonStyle"
-            android:onClick="play"
-            android:text="@string/play" />
-
-    </LinearLayout>
+    tools:context=".GameStateFragment">
 
 
     <LinearLayout style="@style/wrapCenterWeight1">
 
         <TextView
-            android:id="@+id/status"
+            android:id="@+id/state_of_game"
             style="@style/textStyle" />
 
     </LinearLayout>
 
+    <LinearLayout style="@style/wrapCenterWeight1">
+
+        <EditText
+            android:id="@+id/letter"
+            style="@style/editTextStyle"
+            android:imeOptions="actionDone" />
+    </LinearLayout>
 </LinearLayout>

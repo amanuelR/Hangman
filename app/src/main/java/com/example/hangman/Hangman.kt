@@ -10,6 +10,7 @@ class Hangman(guesses: Int) {
     var guessesAllowed = 0
     var guessesLeft: Int
         private set
+
     fun guess(c: Char) {
         var goodGuess = false
         for (i in 0 until word.length) {
@@ -32,12 +33,12 @@ class Hangman(guesses: Int) {
         for (i in indexesGuessed.indices)
             if (indexesGuessed[i] == false) {
                 won = false
-                 break
-             }
+                break
+            }
         return if (won) // won
-                1 else if (guessesLeft == 0) // lost
-                -1 else  // game not over
-                  0
+            1 else if (guessesLeft == 0) // lost
+            -1 else  // game not over
+            0
     }
 
     companion object {

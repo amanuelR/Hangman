@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import com.example.hangman.MainActivity.Companion.game
 import com.example.hangman.databinding.FragmentGameControlBinding
 
@@ -22,7 +23,8 @@ class GameControlFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private var _binding : FragmentGameControlBinding? = null
+    private var _binding: FragmentGameControlBinding? = null
+
     // with the backing property of the kotlin we extract
     // the non null value of the _binding
     private val binding get() = _binding!!
@@ -41,9 +43,13 @@ class GameControlFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         //  return inflater.inflate(R.layout.fragment_game_control,container, false)
-        _binding = FragmentGameControlBinding.inflate(inflater, container,
-            false)
-        binding.status.setText(""+ game.guessesLeft)
+        _binding = FragmentGameControlBinding.inflate(inflater, container, false)
+        val model = ViewModelProvider(requireActivity()).get(Communicator::class.java)
+        binding.play.setOnClickListener {
+            model!!.sendIncompleteWord(game.currentIncompleteWord())
+            binding.status.setText("" + game.guessesLeft)
+        }
+        binding.status.setText("" + game.guessesLeft)
         // Inflate the layout for this fragment
         return binding.root
 
