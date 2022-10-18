@@ -11,6 +11,8 @@ class Communicator : ViewModel(){
     val guessLeft = MutableLiveData<Int>()
     val result = MutableLiveData<Int>()
     val left = MutableLiveData<Int>()
+    val play = MutableLiveData<Boolean>()
+
     // function to send message
     fun sendMessage(text: Char) {
         message.value = text
@@ -31,5 +33,9 @@ class Communicator : ViewModel(){
     fun sendLeft(l: Int)
     {
         left.value = l
+    }
+    fun sendPlay(p: Boolean)
+    {
+        play.value = p
     }
 }

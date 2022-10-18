@@ -79,6 +79,8 @@ class GameStateFragment : Fragment() {
                     val letter: Char = str!!.get(0)
                     game.guess(letter)
                     model.sendGuessLeft(game.guessesLeft)
+                    // Sends play signal to communicator but text is not showing up in keyboard
+                    model.sendPlay(true)
             }
        }
        override fun beforeTextChanged(s: CharSequence, start: Int,
@@ -88,6 +90,7 @@ class GameStateFragment : Fragment() {
                                        before: Int, count: Int) {
             }
         })
+
        return binding.root
     }
 

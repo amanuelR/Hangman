@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.hangman.MainActivity.Companion.game
 import com.example.hangman.databinding.FragmentGameControlBinding
@@ -51,7 +52,7 @@ class GameControlFragment : Fragment() {
     //Binding the play button onClick event. In the event, call the method
     //sendIncompleteWord by passing the function currentIncompleteWord (You need
     //a Hangman object to call the method)
-        binding.play.setOnClickListener {
+        /*binding.play.setOnClickListener {
             model.sendIncompleteWord(game.currentIncompleteWord())
             model.sendGuessLeft(game.guessesLeft)
 
@@ -62,6 +63,19 @@ class GameControlFragment : Fragment() {
             // binding the status with the number of guesses left
             binding.status.text = model.guessLeft.value.toString()
         }
+         */
+
+        model.play.observe(viewLifecycleOwner, Observer{
+            model.sendIncompleteWord(game.currentIncompleteWord())
+            model.sendGuessLeft(game.guessesLeft)
+
+            if(game.guessesLeft < 0)  {
+                model.sendGuessLeft(0)
+            }
+
+            // binding the status with the number of guesses left
+            binding.status.text = model.guessLeft.value.toString()
+        })
 
         // Inflate the layout for this fragment
         return binding.root
