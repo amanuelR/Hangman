@@ -21,7 +21,8 @@
         <EditText
             style="@style/editTextStyle"
             android:id="@+id/letter"
-            android:imeOptions="actionDone"/>
+            android:imeOptions="actionDone"
+            />
 
     </LinearLayout>
 </LinearLayout>

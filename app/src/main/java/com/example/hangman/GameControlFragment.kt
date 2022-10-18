@@ -49,10 +49,11 @@ class GameControlFragment : Fragment() {
         model.sendGuessLeft(game.guessesLeft)
         binding.status.text = model.guessLeft.value.toString()
 
+    /*
     //Binding the play button onClick event. In the event, call the method
     //sendIncompleteWord by passing the function currentIncompleteWord (You need
     //a Hangman object to call the method)
-        /*binding.play.setOnClickListener {
+        binding.play.setOnClickListener {
             model.sendIncompleteWord(game.currentIncompleteWord())
             model.sendGuessLeft(game.guessesLeft)
 
@@ -63,10 +64,14 @@ class GameControlFragment : Fragment() {
             // binding the status with the number of guesses left
             binding.status.text = model.guessLeft.value.toString()
         }
-         */
+
+        */
 
         model.play.observe(viewLifecycleOwner, Observer{
+
+            // Sends incomplete word to blue fragment but causes text to not show up in EditText
             model.sendIncompleteWord(game.currentIncompleteWord())
+
             model.sendGuessLeft(game.guessesLeft)
 
             if(game.guessesLeft < 0)  {
@@ -80,6 +85,7 @@ class GameControlFragment : Fragment() {
         // Inflate the layout for this fragment
         return binding.root
     }
+
 
     companion object {
         /**

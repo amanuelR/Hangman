@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.hangman.databinding.FragmentGameStateBinding
+import java.util.*
+import kotlin.concurrent.schedule
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -45,53 +47,69 @@ class GameStateFragment : Fragment() {
     // return inflater.inflate(R.layout.fragment_game_control, container, false)
         _binding = FragmentGameStateBinding.inflate(inflater, container, false)
 
-    // Create the ViewModel object of class Communicator
+       return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?)    {
+        super.onViewCreated(view, savedInstanceState)
+        // Create the ViewModel object of class Communicator
         val model = ViewModelProvider(requireActivity()).get(Communicator::class.java)
-    // observing the change in the message declared in SharedViewModel
+        // observing the change in the message declared in SharedViewModel
         model.currentIncompleteWord.observe(viewLifecycleOwner, Observer {
-    // Binding the state of the game (stateOfGame. Update the incomplete word in
-    //the TextView inside the top right pane.
+            // Binding the state of the game (stateOfGame. Update the incomplete word in
+            //the TextView inside the top right pane.
             binding.stateOfGame.text = model.currentIncompleteWord.value.toString()
 
             model.sendGuessLeft(game.guessesLeft)
 
-    //binding the letter. Clear the EditText.
-            binding.letter.setText("")
+            //binding the letter. Clear the EditText.
+            // binding.letter.getText().clear()
 
-    // Use ViewModel object to call sendLeft if game.guessesLeft is one
+            binding.letter.setOnClickListener   {
+                binding.letter.getText().clear()
+            }
+
+
+            // Use ViewModel object to call sendLeft if game.guessesLeft is one
             if(game.guessesLeft == 1)   {
                 model.sendLeft(1)
             }
 
-    // Use ViewModel object to call sendResult if result is not equal to 0.
-    //(game is over)
+            // Use ViewModel object to call sendResult if result is not equal to 0.
+            //(game is over)
             val result: Int = game.gameOver()
 
             if(result != 0) {
                 model.sendResult(0)
             }
         })
+
+
+
         binding.letter.addTextChangedListener(object : TextWatcher {
-       override fun afterTextChanged(s: Editable) {
-           var str:String=binding.letter.text.toString()
-           if (str != null && str!!.length > 0) {
+            override fun afterTextChanged(s: Editable) {
+
+                var str:String=binding.letter.text.toString()
+                if (str != null && str!!.length > 0) {
                     // update number of guesses left
                     val letter: Char = str!!.get(0)
                     game.guess(letter)
                     model.sendGuessLeft(game.guessesLeft)
                     // Sends play signal to communicator but text is not showing up in keyboard
                     model.sendPlay(true)
+                }
+
             }
-       }
-       override fun beforeTextChanged(s: CharSequence, start: Int,
+
+            override fun beforeTextChanged(s: CharSequence, start: Int,
                                            count: Int, after: Int) {
             }
-       override fun onTextChanged(s: CharSequence, start: Int,
+            override fun onTextChanged(s: CharSequence, start: Int,
                                        before: Int, count: Int) {
             }
         })
 
-       return binding.root
+
     }
 
        override fun onStart() {
